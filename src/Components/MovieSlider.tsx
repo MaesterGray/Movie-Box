@@ -52,7 +52,7 @@ useEffect(()=>{
 
 },[movies.isLoading,presentIndex,series.isLoading])
 
-const updater=(param)=>{
+const updater=(param:number)=>{
 setPresentIndex(param)
 }
 
@@ -66,7 +66,7 @@ if (variant==='Movies') {
         {movies.isLoading?<div>nothing here</div>:<img className=' object-fill h-full w-full' onLoad={()=>setImageLoading(false)} src={`${imageBase}${renderedPoster}`} alt="" />}
         </div>
         <SliderNavigation presentIndex={presentIndex} stateUpdater={updater}/>
-        <DescriptionBox isLoading={movies.isLoading} title={renderedTitle} rating={renderedRating} description={renderedDescription} id={presnetRoutableId} variant='Movie'/>
+        <DescriptionBox isLoading={movies.isLoading} title={renderedTitle} rating={renderedRating} description={renderedDescription} id={presnetRoutableId} variant='Movies'/>
         
 
     </div>
@@ -81,7 +81,7 @@ if (variant==='Movies') {
         {series.isLoading?<div>nothing here</div>:<img className=' object-fill h-full w-full' src={`${imageBase}${renderedSeriesPoster}`} alt="" />}
         </div>
         <SliderNavigation presentIndex={presentIndex} stateUpdater={updater}/>
-        <DescriptionBox isLoading={series.isLoading} title={renderedSeriesTitle} rating={''} description={renderedSeriesDescription} id={presentRoutableSerieId} variant='Movie'/>
+        <DescriptionBox isLoading={series.isLoading} title={renderedSeriesTitle} rating={''} description={renderedSeriesDescription} id={presentRoutableSerieId} variant='Tv-series'/>
         
 
     </div>

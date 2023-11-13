@@ -78,7 +78,7 @@ if (variants==='Movie') {
     }else{
       navigate(`/Tv-series/${id}`)
     }}}>
-        <div className={favouriteMovies.includes()? `z-10 h-7 bg-gray-100 bg-opacity-50  w-7 rounded-full  absolute right-[3%] top-[3%] flex items-center justify-center text-red-500`:`z-10 h-7 bg-gray-100 bg-opacity-50  w-7 rounded-full  absolute right-[3%] top-[3%] flex items-center justify-center text-gray-100`} onClick={addToFavourites}><AiFillHeart /></div>
+        <div className={favouriteMovies.includes()? `z-10 h-7 bg-gray-100 bg-opacity-50  w-7 rounded-full  absolute right-[3%] top-[3%] flex items-center justify-center text-red-500 cursor-pointer`:`z-10 h-7 bg-gray-100 bg-opacity-50  w-7 rounded-full  absolute right-[3%] top-[3%] flex items-center justify-center text-gray-100 cursor-pointer`} onClick={addToFavourites}><AiFillHeart /></div>
 
       <div className="w-full h-[55%] rounded-md ">
         <img className="object-full w-full h-full rounded-t-md" src={`${imageBase}${image}`} alt="" />

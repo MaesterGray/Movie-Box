@@ -2,13 +2,12 @@ import React from 'react'
 import { useNavigate } from 'react-router-dom'
 import { AiOutlineMenu } from "react-icons/ai"
 import CastOrCrew from "../Components/CastOrCrew"
-import Skeleton from 'react-loading-skeleton'
 
 
 type props ={
     isLoading:boolean,
     overview?:string,
-    movieid:number,
+    movieid:string,
     recommendations:[]
     variants:'Movies'|'Tv-series'
 
@@ -20,8 +19,6 @@ const imageBase= 'https://image.tmdb.org/t/p/original/'
 const MainBody:React.FC<props>  = ({isLoading,overview,movieid,recommendations,variants}) => {
     const navigate=useNavigate()
 
-
-    
   return (
     <section className="w-full flex flex-col space-y-7 lg:flex-row lg:space-x-6 px-4">
         <div className=" flex flex-col space-y-4 lg:w-[60%]">

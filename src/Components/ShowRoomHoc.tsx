@@ -1,6 +1,5 @@
 import React from 'react'
 import Showroom from './Showroom'
-import { useGenreListMovies } from '../hooks/useCategoryFetch'
 
 
 // type Props={

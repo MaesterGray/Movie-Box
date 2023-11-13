@@ -4,6 +4,8 @@ import NavigationPellet from './NavigationPellet'
 import { useLocation } from 'react-router-dom'
 
 
+
+
 const routes=[
     {
       display:'Home',

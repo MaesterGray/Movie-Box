@@ -5,7 +5,6 @@ import Movie from './pages/Movie'
 import Search from './pages/Search'
 import './index.css'
 import { QueryClient,QueryClientProvider } from "@tanstack/react-query"
-import { SkeletonTheme } from 'react-loading-skeleton'
 import Favourites from './pages/Favourites'
 
 
@@ -15,7 +14,6 @@ function App() {
 
   return (
     <QueryClientProvider client={queryClient}>
-      <SkeletonTheme baseColor='black' highlightColor='grey'>
     <BrowserRouter>
     <Routes>
     
@@ -27,7 +25,6 @@ function App() {
     </Routes>
       
     </BrowserRouter>
-    </SkeletonTheme>
     </QueryClientProvider>
 
   )

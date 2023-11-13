@@ -59,7 +59,7 @@ export function useTrendingFetch(){
 return data
 }
 
-export function useSearchFetch(query){
+export function useSearchFetch(query:string){
   const data = useQuery({
     queryKey:['search',query],
     queryFn: async ()=>{
@@ -92,7 +92,7 @@ export function useTvSeriesSearch(query:string){
   return data
 }
 
-export function useMovieId(movieid){
+export function useMovieId(movieid:string){
   const data = useQuery({
     queryKey:['single',movieid],
     queryFn: async ()=>{
@@ -109,7 +109,7 @@ export function useMovieId(movieid){
 return data
 }
 
-export function useRecommendation(movieid){
+export function useRecommendation(movieid:string){
   const data = useQuery({
     queryKey:['recommendations',movieid],
     queryFn: async ()=>{
@@ -126,7 +126,7 @@ export function useRecommendation(movieid){
 return data
 }
 
-export function useCastAndCrew(movieid,variant){
+export function useCastAndCrew(movieid:string,variant:string){
   const data = useQuery({
     queryKey:['Topcast',movieid],
     queryFn: async ()=>{
@@ -155,7 +155,7 @@ return data
 
 }
 
-export function useSerieCastAndCrew(serieid){
+export function useSerieCastAndCrew(serieid:string){
   const data = useQuery({
     queryKey:['Topcast',serieid],
     queryFn: async ()=>{
@@ -207,7 +207,7 @@ return data
 
 }
 
-export function useSerieId(serieid){
+export function useSerieId(serieid:string){
   const data = useQuery({
     queryKey:['single',serieid],
     queryFn: async ()=>{
@@ -224,7 +224,7 @@ export function useSerieId(serieid){
 return data
 }
 
-export function useRecommendationSeries(serieid){
+export function useRecommendationSeries(serieid:string){
   const data = useQuery({
     queryKey:['recommendations',serieid],
     queryFn: async ()=>{
