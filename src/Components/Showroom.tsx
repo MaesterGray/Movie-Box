@@ -17,9 +17,9 @@ const Showroom:React.FC<Props> = ({category,variants}) => {
   const placeholders=[1,2,3,4,5,6]
 useEffect(()=>{
   if (movies.isLoading===false) {
-  ''
+  console.log(movies.data.results[0].genre_ids)
   }
-},[movies])
+},[movies.isLoading])
 
 if (movies.isError) {
   return( <div>oopsss</div>)

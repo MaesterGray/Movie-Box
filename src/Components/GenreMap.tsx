@@ -96,7 +96,9 @@ const GenreMap:React.FC<Props> = ({genreIds}) => {
 
     })
   return (
-    <div className='flex space-x-3  '>{genreIds.map((object,index)=>{return(<GenrePellet key={index} genre={object.name}/>)})}</div>
+    <div className='flex space-x-3 overflow-x-auto '>
+      {typeof(genreIds[0])==='object'? genreIds.map((object,index)=>{return(<GenrePellet key={index} genre={object.name}/>)}):genreIds.map((id,index)=>{const genre = genres.find((genre)=>genre.id===id); return (<GenrePellet key={index} genre={genre.name}/>)})}
+      </div>
   )
 }
 

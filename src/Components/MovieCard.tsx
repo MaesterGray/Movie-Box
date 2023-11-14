@@ -33,17 +33,21 @@ const MovieCard:React.FC<Props> = ({image,title,rating,debut,id,genres,variants}
 
 const navigate = useNavigate()
 
-const addToFavourites = (e)=>{
+const addToFavourites = (e:Event)=>{
 e.stopPropagation();
 
 if (variants==='Movie') {
-  if (favouriteMovies.includes(id)) {
-  
+  if (favouriteMovies.some(obj => obj.id === id )) {
+  ''
   }else{
     addtofavouriteMovies({
-      image:image,
-      title:title,
-      id:id
+      image,
+      title,
+      id,
+      rating,
+      debut,
+      variants,
+      genres
     });
   toast(`${title} has been added to your favourite movies`,{
     toastId:id,
@@ -53,7 +57,7 @@ if (variants==='Movie') {
   }
 }else{
   if (favouriteSeries.includes(id)) {
-  
+  ''
   }else{
     addtofavouriteSeries({
       image:image,
@@ -78,7 +82,7 @@ if (variants==='Movie') {
     }else{
       navigate(`/Tv-series/${id}`)
     }}}>
-        <div className={favouriteMovies.includes()? `z-10 h-7 bg-gray-100 bg-opacity-50  w-7 rounded-full  absolute right-[3%] top-[3%] flex items-center justify-center text-red-500 cursor-pointer`:`z-10 h-7 bg-gray-100 bg-opacity-50  w-7 rounded-full  absolute right-[3%] top-[3%] flex items-center justify-center text-gray-100 cursor-pointer`} onClick={addToFavourites}><AiFillHeart /></div>
+        <div className={favouriteMovies.some(obj => obj.id === id)? `z-10 h-7 bg-gray-100 bg-opacity-50  w-7 rounded-full  absolute right-[3%] top-[3%] flex items-center justify-center text-red-500 cursor-pointer`:`z-10 h-7 bg-gray-100 bg-opacity-50  w-7 rounded-full  absolute right-[3%] top-[3%] flex items-center justify-center text-gray-100 cursor-pointer`} onClick={addToFavourites}><AiFillHeart /></div>
 
       <div className="w-full h-[55%] rounded-md ">
         <img className="object-full w-full h-full rounded-t-md" src={`${imageBase}${image}`} alt="" />
