@@ -1,7 +1,7 @@
 import React from 'react'
 
 type Props = {
-    genre:string
+    genre?:string
 }
 
 const GenrePellet:React.FC<Props> = ({genre}) => {

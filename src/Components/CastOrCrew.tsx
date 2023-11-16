@@ -39,6 +39,7 @@ const CastOrCrew:React.FC<props> = ({movieid,variants}) => {
                 <h1 className=' font-bold'>Directors</h1>
                 <div className='flex space-x-2'>{castandcrew.isLoading?<PersonImageSkeleton/> :directors.map((director:People)=>(<PersonImage  name={director.name} image={director.profile_path} />))}</div>
             </div>
+            
             <div className='flex flex-col space-y-1 w-[100%] overflow-x-auto'>
                 <h1 className=' font-bold'>Cast</h1>
                 <div className=' flex space-x-4'>{castandcrew.isLoading?placeholder.map(()=>(<PersonImageSkeleton/>)) :castandcrew?.data?.cast?.map((cast:People,index:number)=>(< PersonImage key={index}  name={cast.name} image={cast.profile_path} />))}</div>

@@ -1,6 +1,6 @@
 import {create} from 'zustand'
 
-type favouritesState={
+export type favouritesState={
     favouriteMovies:object[],
     favouriteSeries:object[],
     addtofavouriteMovies:(movie:object) => void

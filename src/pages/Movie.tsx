@@ -6,7 +6,6 @@ import Sidebar from "../Components/Sidebar"
 import MovieTrailer from "../Components/MovieTrailer"
 import MovieTitle from "../Components/MovieTitle"
 import MainBody from "../Components/MainBody"
-import Skeleton from 'react-loading-skeleton'
 import { useRecommendationSeries } from "../hooks/useCategoryFetch"
 import { useSerieId } from "../hooks/useCategoryFetch"
 

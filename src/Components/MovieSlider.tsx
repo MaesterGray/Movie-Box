@@ -25,9 +25,9 @@ const MovieSlider:React.FC<props> = ({variant}) => {
   const [renderedSeriesDescription,setRenderedSeriesDescription] = useState()
   const [renderedTitle,setRenderedTitle] = useState()
   const [renderedSeriesTitle,setrenderedseriestitle] = useState()
-  const [renderedRating,setrenderedRating]=useState()
-  const [presnetRoutableId,setpresentRoutableId]= useState()
-  const [presentRoutableSerieId,setPresentRoutableSerieId] = useState()
+  const [renderedRating,setrenderedRating]=useState(0)
+  const [presnetRoutableId,setpresentRoutableId]= useState('')
+  const [presentRoutableSerieId,setPresentRoutableSerieId] = useState('')
   const [imageLoading,setImageLoading]= useState(true)
 
 useEffect(()=>{
@@ -81,7 +81,7 @@ if (variant==='Movies') {
         {series.isLoading?<div>nothing here</div>:<img className=' object-fill h-full w-full' src={`${imageBase}${renderedSeriesPoster}`} alt="" />}
         </div>
         <SliderNavigation presentIndex={presentIndex} stateUpdater={updater}/>
-        <DescriptionBox isLoading={series.isLoading} title={renderedSeriesTitle} rating={''} description={renderedSeriesDescription} id={presentRoutableSerieId} variant='Tv-series'/>
+        <DescriptionBox isLoading={series.isLoading} title={renderedSeriesTitle} rating={4} description={renderedSeriesDescription} id={presentRoutableSerieId} variant='Tv-series'/>
         
 
     </div>

@@ -1,4 +1,4 @@
-import React,{useRef,useState} from 'react'
+import React,{ChangeEvent, useRef,useState} from 'react'
 import Logo from './Logo'
 import { AiOutlineMenu,AiOutlineSearch } from 'react-icons/ai'
 import { useSearchFetch } from '../hooks/useCategoryFetch'
@@ -11,7 +11,7 @@ const Header:React.FC = () => {
   const searchResults = useSearchFetch(movieSearch)
 
 
-  const handleChange = (e)=>{
+  const handleChange = (e:ChangeEvent<HTMLInputElement>)=>{
     setMovieSearch(e.target.value)
     console.log(movieSearch,searchResults.data)
   }

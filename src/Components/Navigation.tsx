@@ -1,7 +1,13 @@
 import React from 'react'
 
+type Props ={
+  state:string,
+  stateUpdater:React.Dispatch<React.SetStateAction<string>>
 
-const Navigation = ({state,stateUpdater}) => {
+}
+
+
+const Navigation:React.FC<Props> = ({state,stateUpdater}) => {
     const routes =['Movies','Tv-series']
   return (
     <div className='flex w-screen h-[5vh] justify-center space-x-3'>

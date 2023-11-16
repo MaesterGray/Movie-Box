@@ -1,4 +1,3 @@
-import React from 'react'
 import {LuMonitorPlay} from 'react-icons/lu'
 import { clsx } from 'clsx'
 

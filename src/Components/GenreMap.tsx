@@ -60,7 +60,7 @@ const genres =  [
     },
     {
       "id": 878,
-      "name": "Science Fiction"
+      "name": "Sci-Fi"
     },
     {
       "id": 10770,
@@ -79,25 +79,28 @@ const genres =  [
       "name": "Western"
     }
   ]
+
 type Props = {
-    genreIds : [id:number,name:string]
+    genreIds : [id:number,name:string]|number[]
+}
+
+type genre ={
+  name?:string
 }
 
 const GenreMap:React.FC<Props> = ({genreIds}) => {
-    // function getGenreNamesByIds(idsToMatch:number[]) {
-    //     const matchingGenres = genres.filter(genre => idsToMatch.includes(genre.id));
-    //     const genreNames = matchingGenres.map(genre => genre.name);
-    //     return genreNames;
-    // }
-
-    // const confirmedGenres = getGenreNamesByIds(genreIds)
 
     useEffect(()=>{
 
     })
   return (
     <div className='flex space-x-3 overflow-x-auto '>
-      {typeof(genreIds[0])==='object'? genreIds.map((object,index)=>{return(<GenrePellet key={index} genre={object.name}/>)}):genreIds.map((id,index)=>{const genre = genres.find((genre)=>genre.id===id); return (<GenrePellet key={index} genre={genre.name}/>)})}
+      {typeof(genreIds[0])==='object'?genreIds.map((object:genre,index)=>{return(<GenrePellet key={index} genre={object.name}/>)}):
+      genreIds.map((id,index)=>{
+        const genre = genres.find((genre)=>genre.id===id);
+       return (<GenrePellet key={index} genre={genre?.name}/>)
+       })
+       }
       </div>
   )
 }

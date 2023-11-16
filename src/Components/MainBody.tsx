@@ -12,6 +12,10 @@ type props ={
     variants:'Movies'|'Tv-series'
 
 }
+type recommendation={
+  poster_path:string,
+  id:string
+}
 
 const imageBase= 'https://image.tmdb.org/t/p/original/'
 
@@ -34,12 +38,19 @@ const MainBody:React.FC<props>  = ({isLoading,overview,movieid,recommendations,v
           <CastOrCrew variants={variants} movieid={movieid}/>
         </div>
         <div className=" flex flex-col space-y-2 lg:w-[40%]">
-            <button className=" w-full rounded-md text-center bg-rose-700 text-white py-2">See Showtimes</button>
-            <button className="w-full rounded-md  bg-red-200 text-white py-2 flex justify-center items-center"><span className="flex space-x-2 items-center"><AiOutlineMenu className='text-black' size={15}/> <small>More Watch Options</small></span></button>
+            <button className=" w-full rounded-md text-center bg-rose-700 text-white py-2">
+              See Showtimes
+              </button>
+            <button className="w-full rounded-md  bg-red-200 text-white py-2 flex justify-center items-center">
+              <span className="flex space-x-2 items-center">
+              <AiOutlineMenu className='text-black' size={15}/> 
+              <small>More Watch Options</small>
+              </span>
+              </button>
             <div className=" flex flex-col">
               <h1 className="text-center font-bold text-lg">Similar</h1>
             <div className="w-full flex rounded-md h-[30vh] sm:h-[40vh] md:h-[60vh]  lg:h-[45vh] space-x-1">
-              { recommendations.length>0 ?recommendations.map((object)=>(<img src={`${imageBase}${object.poster_path}`} onClick={()=>{if (variants==='Movies') {
+              { recommendations.length>0 ?recommendations.map((object:recommendation)=>(<img src={`${imageBase}${object.poster_path}`} onClick={()=>{if (variants==='Movies') {
                 navigate(`/Movies/${object.id}`)
               }navigate(`/Tv-series/${object.id}`) }} className=" w-[33.34%] h-full  md:h-full lg:h-full rounded-md hover:scale-105 cursor-pointer"/>)):'nothing here'}
             </div>
