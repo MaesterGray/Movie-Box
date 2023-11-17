@@ -15,9 +15,9 @@ type props={
 
 const MovieTitle:React.FC<props> = ({isLoading,title,runtime,seasons,genres,yearofrelease,variants}) => {
   return (
-    <span className="w-full ">
+    <span className="w-full dark:bg-slate-800">
         {isLoading?<Skeleton/>:
-        <div className=" flex flex-col justify-center space-y-2 font-semibold md:flex md:flex-row md:space-x-3 w-full md:items-center  md:font-bold">
+        <div className=" flex flex-col justify-center space-y-2 font-semibold md:flex md:flex-row md:space-x-3 w-full md:items-center  md:font-bold dark:text-white">
              <span className=' text-center md:pt-1'>{title}</span>
               <span> {variants==='Movies'?runtime:seasons} </span>
                <span>{yearofrelease}</span> 

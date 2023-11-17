@@ -24,9 +24,9 @@ const MainBody:React.FC<props>  = ({isLoading,overview,movieid,recommendations,v
     const navigate=useNavigate()
 
   return (
-    <section className="w-full flex flex-col space-y-7 lg:flex-row lg:space-x-6 px-4">
+    <section className="w-full flex flex-col space-y-7 lg:flex-row lg:space-x-6 px-4 dark:bg-slate-800">
         <div className=" flex flex-col space-y-4 lg:w-[60%]">
-          <p className=" ">{isLoading?
+          <p className=" dark:text-white ">{isLoading?
           <div role='status' className=' w-full rounded-md animate-pulse h-36 flex flex-col space-y-5 '>
               <div className=' w-full h-[25%] bg-gray-200 rounded-md'></div>
               <div className=' w-full h-[25%] bg-gray-200 rounded-md'></div>
@@ -48,7 +48,7 @@ const MainBody:React.FC<props>  = ({isLoading,overview,movieid,recommendations,v
               </span>
               </button>
             <div className=" flex flex-col">
-              <h1 className="text-center font-bold text-lg">Similar</h1>
+              <h1 className="text-center font-bold text-lg dark:text-white">Similar</h1>
             <div className="w-full flex rounded-md h-[30vh] sm:h-[40vh] md:h-[60vh]  lg:h-[45vh] space-x-1">
               { recommendations.length>0 ?recommendations.map((object:recommendation)=>(<img src={`${imageBase}${object.poster_path}`} onClick={()=>{if (variants==='Movies') {
                 navigate(`/Movies/${object.id}`)
