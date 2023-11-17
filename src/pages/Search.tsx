@@ -1,4 +1,4 @@
-import React,{useState,useRef, ChangeEvent} from 'react'
+import {useState,useRef, ChangeEvent} from 'react'
 import { AiOutlineSearch } from 'react-icons/ai'
 import { useSearchFetch } from '../hooks/useCategoryFetch'
 import { useTvSeriesSearch } from '../hooks/useCategoryFetch'
