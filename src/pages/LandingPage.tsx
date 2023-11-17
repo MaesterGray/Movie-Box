@@ -12,7 +12,7 @@ const queryClient = new QueryClient()
 const LandingPage:React.FC = () => {
   const [renderstate,setrenderstate]= useState('Movies')
 
-    const updater = (param)=>{
+    const updater:React.Dispatch<React.SetStateAction<string>> = (param)=>{
       setrenderstate(param)
     }
     useEffect(()=>{

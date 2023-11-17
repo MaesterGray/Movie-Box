@@ -92,7 +92,7 @@ export function useTvSeriesSearch(query:string){
   return data
 }
 
-export function useMovieId(movieid:string){
+export function useMovieId(movieid:string|undefined){
   const data = useQuery({
     queryKey:['single',movieid],
     queryFn: async ()=>{
@@ -109,7 +109,7 @@ export function useMovieId(movieid:string){
 return data
 }
 
-export function useRecommendation(movieid:string){
+export function useRecommendation(movieid:string|undefined){
   const data = useQuery({
     queryKey:['recommendations',movieid],
     queryFn: async ()=>{
@@ -126,7 +126,7 @@ export function useRecommendation(movieid:string){
 return data
 }
 
-export function useCastAndCrew(movieid:string,variant:string){
+export function useCastAndCrew(movieid:string|undefined,variant:string){
   const data = useQuery({
     queryKey:['Topcast',movieid],
     queryFn: async ()=>{
@@ -207,7 +207,7 @@ return data
 
 }
 
-export function useSerieId(serieid:string){
+export function useSerieId(serieid:string|undefined){
   const data = useQuery({
     queryKey:['single',serieid],
     queryFn: async ()=>{

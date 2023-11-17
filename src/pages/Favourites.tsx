@@ -8,7 +8,6 @@ import { MovieProps } from '../types'
 
 const Favourites = () => {
   const favouriteMovies = useFavourites((state)=>state.favouriteMovies)
-  const addtofavouriteMovies = useFavourites((state)=>state.addtofavouriteMovies)
   return (
     <div className=' w-screen h-screen md:relative '>
 

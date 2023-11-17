@@ -25,7 +25,7 @@ const Movie:React.FC<props> = ({variants}) => {
     const [seasons,setseasons] = useState()
     const [formattedRuntime,setFormattedRuntime] = useState('')
     const [releaseYear, setreleaseYear] = useState('')
-    const [seriereleaseYear,setSerieReleaseyear] = useState()
+    const [seriereleaseYear,setSerieReleaseyear] = useState('')
     
 
     

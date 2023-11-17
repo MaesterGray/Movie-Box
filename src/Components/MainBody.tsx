@@ -7,8 +7,8 @@ import CastOrCrew from "../Components/CastOrCrew"
 type props ={
     isLoading:boolean,
     overview?:string,
-    movieid:string,
-    recommendations:[]
+    movieid?:string,
+    recommendations:recommendation[]
     variants:'Movies'|'Tv-series'
 
 }

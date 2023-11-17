@@ -1,9 +1,10 @@
 import {create} from 'zustand'
+import { MovieProps } from '../types'
 
 export type favouritesState={
-    favouriteMovies:object[],
+    favouriteMovies:MovieProps[],
     favouriteSeries:object[],
-    addtofavouriteMovies:(movie:object) => void
+    addtofavouriteMovies:(movie:MovieProps) => void
     addtofavouriteSeries:(serie:object) => void
 }
 

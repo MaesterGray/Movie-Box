@@ -10,6 +10,19 @@ type Props ={
     variants:'Movies'|'Tv-series'
 }
 
+export  type movieResult = {
+  variants:'Movies'|'Tv-series',
+  id:number,
+  poster_path:string,
+  genre_ids:[id: number, name: string]
+  original_title:string,
+  vote_average:number
+  name:string
+  release_date:string
+  first_air_date:string
+  
+}
+
 const Showroom:React.FC<Props> = ({category,variants}) => {
 
   const movies = useCategoryFetch(category)
@@ -34,8 +47,8 @@ if (movies.isError) {
             <span className='  text-red-400 px-2'> See more</span >
         </h1>
     <div className='flex space-x-5 sm:h-[80vh] md:h-[40vh] lg:h-[55vh]  overflow-x-scroll items-center w-screen p-2 justify-center'>
-    {movies.isLoading?placeholders.map((position)=>(<MovieCardSkeleton key={position}/>)):movies.data.results.map((movie)=>(
-      <MovieCard variants='Movie' key={movie.id} image={movie.poster_path} genres={movie.genre_ids} title={movie.original_title} debut={movie.release_date} rating={movie.vote_average} id={movie.id} category={'action'}/>
+    {movies.isLoading?placeholders.map((position)=>(<MovieCardSkeleton key={position}/>)):movies.data.results.map((movie:movieResult)=>(
+      <MovieCard variants='Movie' key={movie.id} image={movie.poster_path} genres={movie.genre_ids} title={movie.original_title} debut={movie.release_date} rating={movie.vote_average} id={movie.id} />
     ))}
     </div>
     </motion.div>
@@ -50,8 +63,8 @@ if (variants==='Tv-series') {
             <span className='  text-red-400 px-2'> See more</span >
         </h1>
     <div className='flex space-x-3 sm:h-[80vh] md:h-[40vh] lg:h-[55vh]  overflow-x-scroll items-center w-screen p-2 '>
-    {series.isLoading?placeholders.map((position)=>(<MovieCardSkeleton key={position}/>)):series.data.results.map((serie)=>(
-      <MovieCard variants='Tv-serie' key={serie.id} image={serie.poster_path} genres={serie.genre_ids} title={serie.name} debut={serie.first_air_date} rating={serie.vote_average} id={serie.id} category={'action'}/>
+    {series.isLoading?placeholders.map((position)=>(<MovieCardSkeleton key={position}/>)):series.data.results.map((serie:movieResult)=>(
+      <MovieCard variants='Tv-serie' key={serie.id} image={serie.poster_path} genres={serie.genre_ids} title={serie.name} debut={serie.first_air_date} rating={serie.vote_average} id={serie.id} />
     ))}
     </div>
     </motion.div>

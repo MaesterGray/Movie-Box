@@ -6,7 +6,7 @@ import PersonImage from './PersonImage'
 import PersonImageSkeleton from './PersonImageSkeleton'
 
 type props ={
-    movieid:string,
+    movieid?:string,
     variants:'Movies'|'Tv-series'
 }
 

@@ -6,7 +6,7 @@ import DescriptionBox from './DescriptionBox'
 import SliderNavigation from './SliderNavigation'
 import { useTrendingSeries } from '../hooks/useCategoryFetch'
 
-const imageBase = 'https://image.tmdb.org/t/p/original/'
+export const imageBase = 'https://image.tmdb.org/t/p/original/'
 
 type props ={
   variant:'Movies'|'Tv-series'
@@ -28,7 +28,6 @@ const MovieSlider:React.FC<props> = ({variant}) => {
   const [renderedRating,setrenderedRating]=useState(0)
   const [presnetRoutableId,setpresentRoutableId]= useState('')
   const [presentRoutableSerieId,setPresentRoutableSerieId] = useState('')
-  const [imageLoading,setImageLoading]= useState(true)
 
 useEffect(()=>{
 
@@ -52,7 +51,7 @@ useEffect(()=>{
 
 },[movies.isLoading,presentIndex,series.isLoading])
 
-const updater=(param:number)=>{
+const updater:React.Dispatch<React.SetStateAction<number>>=(param)=>{
 setPresentIndex(param)
 }
 
@@ -63,7 +62,7 @@ if (variant==='Movies') {
       <Header/>
 
       <div ref={imagePoster} className= ' w-full h-full bg-gray-200 '>
-        {movies.isLoading?<div>nothing here</div>:<img className=' object-fill h-full w-full' onLoad={()=>setImageLoading(false)} src={`${imageBase}${renderedPoster}`} alt="" />}
+        {movies.isLoading?<div>nothing here</div>:<img className=' object-fill h-full w-full'  src={`${imageBase}${renderedPoster}`} alt="" />}
         </div>
         <SliderNavigation presentIndex={presentIndex} stateUpdater={updater}/>
         <DescriptionBox isLoading={movies.isLoading} title={renderedTitle} rating={renderedRating} description={renderedDescription} id={presnetRoutableId} variant='Movies'/>

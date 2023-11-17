@@ -4,9 +4,12 @@ import NavigationPellet from './NavigationPellet'
 import { useLocation } from 'react-router-dom'
 
 
+type Routes = {
+  display:"Movies" | "Tv-series" | "Home" | "Upcoming" | "Favourites" | "Logout",
+  route:string
+}[]
 
-
-const routes=[
+const routes:Routes=[
     {
       display:'Home',
      route:'/'
@@ -21,7 +24,8 @@ const routes=[
     },
    
     {display:'Upcoming',
-    route:''},
+    route:''
+  },
     {
         display:'Favourites',
         route:'/Favourites'
@@ -33,7 +37,7 @@ const routes=[
   ]
 
 const Sidebar = () => {
-    const[active,setactive]= useState('')
+    const[active,setactive]= useState<'Movies'|'Tv-series'|'Favourites'>('Movies')
 const location = useLocation()
 
 useEffect(()=>{
@@ -44,7 +48,7 @@ useEffect(()=>{
     }else if (location.pathname.includes('Favourites')){
       setactive('Favourites')
     }
-})
+},[])
 
 
   return (

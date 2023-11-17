@@ -2,11 +2,14 @@ import React from 'react'
 
 const positions =[0,1,2,3,4,5,6,7,8,9,]
 
+type props ={
+  presentIndex:number,
+  stateUpdater:React.Dispatch<React.SetStateAction<number>>
+}
 
 
 
-
-const SliderNavigation = ({presentIndex,stateUpdater}) => {
+const SliderNavigation:React.FC<props> = ({presentIndex,stateUpdater}) => {
 
   function update (position:number){
     if(position===presentIndex){

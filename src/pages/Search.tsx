@@ -1,7 +1,8 @@
-import React,{useEffect,useState,useRef} from 'react'
+import React,{useState,useRef, ChangeEvent} from 'react'
 import { AiOutlineSearch } from 'react-icons/ai'
 import { useSearchFetch } from '../hooks/useCategoryFetch'
 import { useTvSeriesSearch } from '../hooks/useCategoryFetch'
+import { movieResult } from '../Components/Showroom'
 
 import { Link } from 'react-router-dom'
 import {BiArrowBack} from 'react-icons/bi'
@@ -16,7 +17,7 @@ const Search = () => {
     const searchResults = useSearchFetch(movieSearch)
     const seriesResults = useTvSeriesSearch(seriesSearch)
 
-    const handleChange = (e)=>{
+    const handleChange = (e:ChangeEvent<HTMLInputElement>)=>{
         setMovieSearch(e.target.value)
         setseriessearch(e.target.value)
         console.log(seriesSearch,seriesResults)
@@ -35,7 +36,7 @@ const Search = () => {
         <h1 className='w-full text-center text-white font-bold'>Results</h1>
     <div className='flex flex-col w-[90%] h-[40vh] space-y-1'>
         <h1 className='text-white h-[5%]'>Movies</h1>
-        <div className='w-full h-[92%] '>{searchResults.isLoading?'nothing here':searchResults.data.results.map((result)=>{<MovieCard id={result.id} category='comedy' debut={result.release_date} rating={result.vote_average} title={result.original_title} image={result.poster_path} />})}</div>
+        <div className='w-full h-[92%] '>{searchResults.isLoading?'nothing here':searchResults.data.results.map((result:movieResult)=>{<MovieCard id={result.id} variants='Movie' image={result.poster_path} genres={result.genre_ids} debut={result.release_date} rating={result.vote_average} title={result.original_title}  />})}</div>
     </div>
 
     </div>
