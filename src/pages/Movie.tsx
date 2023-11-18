@@ -70,7 +70,7 @@ const Movie:React.FC<props> = ({variants}) => {
         <div className="  w-screen  md:relative ">
     
         <Sidebar/>
-        <div className="w-screen lg:w-[85vw] p-3   flex flex-col rounded-md space-y-4 lg:p-10 absolute lg:left-[15vw]">
+        <div className="w-screen lg:w-[85vw] p-3   flex flex-col rounded-md space-y-4 lg:p-10 absolute lg:left-[15vw] dark:bg-slate-800">
         <MovieTrailer isLoading={movieData.isLoading} image={movieData?.data?.backdrop_path} />
         <MovieTitle variants="Movies" isLoading={movieData.isLoading} runtime={formattedRuntime} title={movieData?.data?.title} genres={movieData?.data?.genres} yearofrelease={releaseYear}/>
     
@@ -91,10 +91,10 @@ const Movie:React.FC<props> = ({variants}) => {
     
         <Sidebar/>
         <div className="w-screen lg:w-[85vw] p-3  absolute lg:left-[15vw]  flex flex-col rounded-md space-y-4 lg:p-10 ">
-        <MovieTrailer isLoading={serieData.isLoading} image={serieData.data.backdrop_path} />
+        <MovieTrailer isLoading={serieData.isLoading} image={serieData.data?.backdrop_path} />
         <MovieTitle isLoading={serieData.isLoading} seasons={serieData?.data?.results?.number_of_seasons} variants="Tv-series" runtime={formattedRuntime} title={serieData?.data?.name} genres={serieData?.data?.genres} yearofrelease={seriereleaseYear}/>
     
-        <MainBody variants="Tv-series" isLoading={serieData.isLoading} overview={serieData?.data?.overview} movieid={movieId} recommendations={serieRecommendationArray}/>
+        <MainBody variants="Tv-series" isLoading={serieData.isLoading} overview={serieData?.data?.overview} movieid={movieId} recommendations={serieRecommendationArray} />
     
           
           <Footer/>

@@ -8,6 +8,7 @@ import { MovieProps } from '../types'
 
 const Favourites = () => {
   const favouriteMovies = useFavourites((state)=>state.favouriteMovies)
+  const favouriteSeries = useFavourites((state)=> state.favouriteSeries )
   return (
     <div className=' w-screen h-screen md:relative '>
 
@@ -21,7 +22,7 @@ const Favourites = () => {
        
        <div className='w-fit h-fit p-3 flex flex-col '>
        <h1 className=' w-full text-center font-bold text-lg'>Favourite Series</h1>
-        <div className=' flex flex-wrap'>{}</div>
+        <div className=' flex flex-wrap space-x-1'>{favouriteSeries.map((movie)=>(<MovieCard image={movie.image} id={movie.id}  title={movie.title} rating={movie.rating} debut={movie.debut} variants={movie.variants} genres={movie.genres}/>))}</div>
        </div>
         
       </div>

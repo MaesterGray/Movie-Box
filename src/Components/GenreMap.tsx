@@ -81,7 +81,8 @@ const genres =  [
   ]
 
 type Props = {
-    genreIds : [id:number,name:string]|number[]
+    genreIds : [id:number,name:string]|number[],
+    
 }
 
 type genre ={
@@ -94,7 +95,7 @@ const GenreMap:React.FC<Props> = ({genreIds}) => {
 
     })
   return (
-    <div className='flex space-x-3 overflow-x-auto '>
+    <div className='flex space-x-3 overflow-x-auto h-[full]'>
       {typeof(genreIds[0])==='object'?genreIds.map((object:genre,index)=>{return(<GenrePellet key={index} genre={object.name}/>)}):
       genreIds.map((id,index)=>{
         const genre = genres.find((genre)=>genre.id===id);
