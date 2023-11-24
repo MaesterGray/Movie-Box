@@ -52,7 +52,7 @@ useEffect(()=>{
 
 
   return (
-    <div className="hidden lg:w-[15vw] lg:h-screen lg:rounded-r-3xl lg:items-center lg:flex lg:flex-col lg:space-y-5 lg:py-10 lg:border lg:border-gray-400 lg:fixed "> 
+    <div className="hidden lg:w-[15vw] lg:h-screen lg:rounded-r-3xl lg:items-center lg:flex lg:flex-col lg:space-y-5 lg:py-10 lg:border lg:border-gray-400 lg:fixed  font-Poppins dark:bg-slate-800 "> 
     <Logo variant="sidebar"/>
     {routes.map((route)=>(<NavigationPellet key={route.display} variant={route.display} active={active} route={route.route}/>))}
 

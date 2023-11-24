@@ -1,18 +1,18 @@
 import { QueryClient,QueryClientProvider } from "@tanstack/react-query"
 import MovieSlider from "../Components/MovieSlider"
-import ShowRoomHoc from "../Components/ShowRoomHoc"
 import Footer from "../Components/Footer"
 import {useState,useEffect} from 'react'
 import Navigation from "../Components/Navigation"
+import Showroom from "../Components/Showroom"
 
 const queryClient = new QueryClient()
 
 
 
 const LandingPage:React.FC = () => {
-  const [renderstate,setrenderstate]= useState('Movies')
+  const [renderstate,setrenderstate]= useState<'Movies'|'Tv-series'>('Movies')
 
-    const updater:React.Dispatch<React.SetStateAction<string>> = (param)=>{
+    const updater:React.Dispatch<React.SetStateAction<'Movies'|'Tv-series'>> = (param)=>{
       setrenderstate(param)
     }
     useEffect(()=>{
@@ -23,7 +23,7 @@ const LandingPage:React.FC = () => {
     <QueryClientProvider client={queryClient}>
      {renderstate==='Movies'? <MovieSlider variant="Movies" /> : <MovieSlider variant="Tv-series"/>}
       <Navigation state={renderstate} stateUpdater={updater}/>
-        {renderstate==='Movies'?<ShowRoomHoc variants="Movies" />:<ShowRoomHoc variants="Tv-series"/>}
+        {renderstate==='Movies'?<Showroom variants={renderstate}/>:<Showroom variants={renderstate}/>}
         <Footer/>
     </QueryClientProvider>
   )

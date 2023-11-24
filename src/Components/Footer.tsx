@@ -5,7 +5,7 @@ import {AiFillFacebook , AiOutlineInstagram , AiFillLinkedin , AiFillTwitterSqua
 
 const Footer = () => {
   return (
-    <footer className=' w-full h-[30vh] flex flex-col space-y-3 justify-center items-center '>
+    <footer className=' w-full h-[15vh] flex flex-col space-y-3 justify-center items-center dark:text-white dark:bg-slate-800 font-DmSans'>
         <span className=' flex space-x-2'><AiFillFacebook size={20}/><AiOutlineInstagram size={20}/> <AiFillTwitterSquare size={20}/> <AiFillLinkedin size={20}/> <AiFillGithub size={20}/></span>
         <span className='flex   space-x-5 font-bold text-sm'>
         <p>Conditions of Use</p>

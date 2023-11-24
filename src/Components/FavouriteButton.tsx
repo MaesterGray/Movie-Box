@@ -16,7 +16,7 @@ const FavouriteButton:React.FC<MovieProps> = ({image,title,id,rating,debut,varia
   const addToFavourites = (e:React.MouseEvent<HTMLDivElement>)=>{
     e.stopPropagation();
     
-    if (variants==='Movie') {
+    if (variants==='Movies') {
       if (favouriteIncludes(favouriteMovies)) {
       removeMovie({
         image,
@@ -84,7 +84,7 @@ const FavouriteButton:React.FC<MovieProps> = ({image,title,id,rating,debut,varia
   }
 
   return (
-    <div className={favouriteMovies.some(obj => obj.id === id)|| favouriteSeries.some(obj => obj.id==id)? `z-10 h-7 bg-gray-100 bg-opacity-50  w-7 rounded-full  absolute right-[3%] top-[3%] flex items-center justify-center text-red-500 cursor-pointer`:`z-10 h-7 bg-gray-100 bg-opacity-50  w-7 rounded-full  absolute right-[3%] top-[3%] flex items-center justify-center text-gray-100 cursor-pointer`} onClick={addToFavourites}><AiFillHeart /></div>
+    <div className={variants==='Movies'&& favouriteMovies.some(obj => obj.id === id)|| variants==='Tv-series'&& favouriteSeries.some(obj => obj.id==id)? `z-10 h-7 bg-gray-100 bg-opacity-50  w-7 rounded-full  absolute right-[3%] top-[3%] flex items-center justify-center text-red-500 cursor-pointer`:`z-10 h-7 bg-gray-100 bg-opacity-50  w-7 rounded-full  absolute right-[3%] top-[3%] flex items-center justify-center text-gray-100 cursor-pointer`} onClick={addToFavourites}><AiFillHeart /></div>
     
   )
 }

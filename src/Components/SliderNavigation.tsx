@@ -19,7 +19,7 @@ const SliderNavigation:React.FC<props> = ({presentIndex,stateUpdater}) => {
     }
     }
   return (
-    <div className='hidden lg:flex flex-col space-y-3 text-orange-600 absolute right-[2%] top-[35%]  border border-black  rounded-md backdrop-blur-lg justify-center items-center cursor-pointer'>
+    <div className='hidden lg:flex flex-col space-y-3 text-orange-600 absolute right-[2%] top-[35%]  border border-black  rounded-md backdrop-blur-lg justify-center items-center cursor-pointer font-DmSans'>
     {positions.map((position)=>(
         <div key={position} className={position===presentIndex?`flex scale-105  space-x-3  justify-center items-center`:`flex justify-center items-center`} onClick={()=>update(position)}>
             <div className={position===presentIndex? `w-4 h-1 rounded-sm bg-orange-500  `:` hidden`}></div>

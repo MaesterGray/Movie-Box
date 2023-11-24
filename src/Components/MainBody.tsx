@@ -24,20 +24,23 @@ const MainBody:React.FC<props>  = ({isLoading,overview,movieid,recommendations,v
     const navigate=useNavigate()
 
   return (
-    <section className="w-full flex flex-col space-y-7 lg:flex-row lg:space-x-6 px-4 dark:bg-slate-800">
-        <div className=" flex flex-col space-y-4 lg:w-[60%]">
-          <p className=" dark:text-white ">{isLoading?
+    <section className="w-full flex flex-col space-y-7  lg:flex-row lg:space-x-5 lg:items-baseline px-4 dark:bg-slate-800 font-Poppins">
+
+        <div className=" flex flex-col space-y-4 lg:w-[57%] ">
+          <p className=" dark:text-white ">
+            {isLoading?
           <div role='status' className=' w-full rounded-md animate-pulse h-36 flex flex-col space-y-5 '>
               <div className=' w-full h-[25%] bg-gray-200 rounded-md'></div>
               <div className=' w-full h-[25%] bg-gray-200 rounded-md'></div>
               <div className=' w-full h-[25%] bg-gray-200 rounded-md'></div>
               <div className=' w-full h-[23%] bg-gray-200 rounded-md'></div>
           </div>:
-          overview}
+                overview}
           </p>
           <CastOrCrew variants={variants} movieid={movieid}/>
         </div>
-        <div className=" flex flex-col space-y-2 lg:w-[40%]">
+
+        <div className=" flex flex-col space-y-2 lg:w-[40%] mr-0 mt-0">
             <button className=" w-full rounded-md text-center bg-rose-700 text-white py-2">
               See Showtimes
               </button>
@@ -50,9 +53,11 @@ const MainBody:React.FC<props>  = ({isLoading,overview,movieid,recommendations,v
             <div className=" flex flex-col">
               <h1 className="text-center font-bold text-lg dark:text-white">Similar</h1>
             <div className="w-full flex rounded-md h-[30vh] sm:h-[40vh] md:h-[60vh]  lg:h-[45vh] space-x-1">
-              { recommendations.length>0 ?recommendations.map((object:recommendation)=>(<img src={`${imageBase}${object.poster_path}`} onClick={()=>{if (variants==='Movies') {
+              { recommendations.length>0 ?
+              recommendations.map((object:recommendation)=>(
+              <img src={`${imageBase}${object.poster_path}`} onClick={()=>{if (variants==='Movies') {
                 navigate(`/Movies/${object.id}`)
-              }navigate(`/Tv-series/${object.id}`) }} className=" w-[33.34%] h-full  md:h-full lg:h-full rounded-md hover:scale-105 cursor-pointer"/>)):'nothing here'}
+              } else{navigate(`/Tv-series/${object.id}`)} }} className=" w-[33.34%] h-full  md:h-full lg:h-full rounded-md hover:scale-105 cursor-pointer"/>)):'nothing here'}
             </div>
             </div>
         </div>

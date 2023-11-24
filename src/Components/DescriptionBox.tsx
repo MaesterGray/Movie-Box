@@ -12,7 +12,7 @@ type Props ={
 }
 const DescriptionBox:React.FC<Props> = ({isLoading,title,rating,description,id,variant}) => {
   return (
-    <div className='hidden lg:block lg:absolute    lg:w-[17vw] lg:h-[17vw]  backdrop-blur-lg  bottom-[25%] left-[5%] shadow-sm shadow-black rounded-md p-3 hover:scale-110'>
+    <div className='hidden lg:block lg:absolute    lg:w-[17vw] lg:h-[17vw]  backdrop-blur-lg  bottom-[25%] left-[5%] shadow-sm shadow-black rounded-md p-3 hover:scale-110 font-DmSans'>
         {
         isLoading?
         <div className=' animate-pulse w-full h-full flex flex-col space-y-3'>

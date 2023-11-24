@@ -14,7 +14,7 @@ const MovieCard:React.FC<MovieProps> = ({image,title,rating,debut,id,genres,vari
 const navigate = useNavigate()
 
 const handleNavigate = ()=>{
-  if (variants==='Movie') {
+  if (variants==='Movies') {
     navigate(`/Movies/${id}`) 
   }else{
     navigate(`/Tv-series/${id}`)
@@ -23,7 +23,7 @@ const handleNavigate = ()=>{
 
 
   return (
-    <motion.div initial={{opacity:0, scaleX:0.7}} whileInView={{opacity:1,scaleX:1}} transition={{delay:0.3,duration:0.5,}} className="h-[90%] w-[47%] sm:w-[25%] md:w-[20%] md:h-[90%] lg:w-[15%]  sm:space-y-1  flex-col space-y-1 flex-shrink-0  rounded-md hover:scale-110 hover:z-10 bg-gray-200 shadow-sm relative overflow-clip" onClick={handleNavigate}>
+    <motion.div initial={{opacity:0, scaleX:0.7}} whileInView={{opacity:1,scaleX:1}} transition={{delay:0.3,duration:0.5,}} className=" aspect-[9/16] w-[47%] sm:w-[25%]  md:w-[25%]  lg:w-[15%]   sm:space-y-1  flex-col space-y-1 flex-shrink-0  rounded-md hover:scale-110 hover:z-10 bg-gray-200 shadow-sm relative overflow-clip font-DmSans" onClick={handleNavigate}>
 
       <div className="w-full h-[55%] rounded-md ">
         <img className="object-full w-full h-full rounded-t-md" src={`${imageBase}${image}`} alt="" />

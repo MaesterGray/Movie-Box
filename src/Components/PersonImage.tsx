@@ -18,7 +18,7 @@ const PersonImage:React.FC<props> = ({name,image,}) => {
           <img className=' object-cover h-full w-full rounded-full' src={`${imageBase}${image}`} alt="" />
           </div>
 
-        <span className=' font-semibold text-xs w-[100%] truncate  sm:text-xs text-center text-rose-700 md:font-bold '>
+        <span className=' font-semibold text-xs w-[100%] truncate  sm:text-xs text-center text-rose-700 dark:text-white md:font-bold '>
           {name}
           </span>
     </div>

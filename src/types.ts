@@ -8,6 +8,6 @@ export type MovieProps ={
       id:number,
       name:string
     ],
-    variants:'Movie'|'Tv-serie'
+    variants:'Movies'|'Tv-series'
     
     }

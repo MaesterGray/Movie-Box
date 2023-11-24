@@ -6,35 +6,59 @@ const headers = {
     accept: 'application/json',
     Authorization: `Bearer ${import.meta.env.VITE_API_TOKEN}`
   };
-export default function useCategoryFetch(category:string){
+export default function useDiscover(page:number,variant:string){
 
     const data = useQuery({
-        queryKey:[category],
+        queryKey:['list',page,variant],
         queryFn: async ()=>{
-          const response = await axios.get(`https://api.themoviedb.org/3/discover/movie?include_adult=false&include_video=true&language=en-US&page=1&sort_by=popularity.desc&with_genres=${category}`,{
+          if (variant ==='Movies') {
+            const response = await axios.get(`https://api.themoviedb.org/3/discover/movie?include_adult=false&include_video=true&language=en-US&page=${page}&sort_by=popularity.desc&with_genres=Action`,{
             headers:headers
           })
                 if (response.data) {
                   return response.data  
                 }console.log(response.status)
         }
-       
+        else {
+          const response = await axios.get(`https://api.themoviedb.org/3/discover/tv?first_air_date_year=2023&include_adult=false&include_null_first_air_dates=false&language=en-US&page=${page}&sort_by=popularity.desc&with_origin_country=US`,{
+            headers:headers
+          })
+                if (response.data) {
+                  return response.data  
+                  
+                }console.log(response.status)
+        }
+          }
+          
     })
 
         
     return data
 }
 
-export function useGenreListMovies (){
+
+
+export function useTrendingFetch(variant:string){
   const data = useQuery({
-    queryKey:['genrelist'],
+    queryKey:['trending',variant],
     queryFn: async ()=>{
-      const response = await axios.get(`https://api.themoviedb.org/3/genre/movie/list?language=en`,{
-        headers:headers
-      })
-            if (response.data) {
-              return response.data  
-            }console.log(response.status)
+      if (variant==='Movies') {
+        const response = await axios.get(`https://api.themoviedb.org/3/trending/movie/day?language=en-US`,{
+          headers:headers
+        })
+              if (response.data) {
+                return response.data  
+              }console.log(response.status)
+      }else{
+        const response = await axios.get(`https://api.themoviedb.org/3/trending/tv/day?language=en-US`,{
+          headers:headers
+        })
+              if (response.data) {
+                return response.data  
+                
+              }console.log(response.status)
+      }
+    
     }
    
 })
@@ -42,22 +66,9 @@ export function useGenreListMovies (){
 return data
 }
 
-export function useTrendingFetch(){
-  const data = useQuery({
-    queryKey:['trending'],
-    queryFn: async ()=>{
-      const response = await axios.get(`https://api.themoviedb.org/3/trending/movie/day?language=en-US`,{
-        headers:headers
-      })
-            if (response.data) {
-              return response.data  
-            }console.log(response.status)
-    }
-   
-})
 
-return data
-}
+
+
 
 export function useSearchFetch(query:string){
   const data = useQuery({
@@ -92,16 +103,27 @@ export function useTvSeriesSearch(query:string){
   return data
 }
 
-export function useMovieId(movieid:string|undefined){
+export function useMovieId(id:string|undefined,variant:string){
+
+  
   const data = useQuery({
-    queryKey:['single',movieid],
+    queryKey:['single',id],
     queryFn: async ()=>{
-      const response = await axios.get(`https://api.themoviedb.org/3/movie/${movieid}?language=en-US`,{
-        headers:headers
-      })
-            if (response.data) {
-              return response.data  
-            }console.log(response.status)
+      if (variant==='Movies') {
+        const response = await axios.get(`https://api.themoviedb.org/3/movie/${id}?language=en-US`,{
+            headers:headers
+          })
+                if (response.data) {
+                  return response.data  
+                }console.log(response.status)
+      }else{
+        const response = await axios.get(`https://api.themoviedb.org/3/tv/${id}?language=en-US`,{
+          headers:headers
+        })
+              if (response.data) {
+                return response.data  
+              }console.log(response.status)
+      }
     }
    
 })
@@ -109,22 +131,36 @@ export function useMovieId(movieid:string|undefined){
 return data
 }
 
-export function useRecommendation(movieid:string|undefined){
+
+
+export function useRecommendation(id:string|undefined,variant:string){
   const data = useQuery({
-    queryKey:['recommendations',movieid],
+    queryKey:['recommendations',id],
     queryFn: async ()=>{
-      const response = await axios.get(`https://api.themoviedb.org/3/movie/${movieid}/similar?language=en-US&page=1`,{
+      if (variant==='Movies') {
+        const response = await axios.get(`https://api.themoviedb.org/3/movie/${id}/similar?language=en-US&page=1`,{
         headers:headers
       })
             if (response.data) {
               return response.data  
               
             }console.log(response.status)
+      }else{
+        const response = await axios.get(`https://api.themoviedb.org/3/tv/${id}/recommendations?language=en-US&page=1`,{
+          headers:headers
+        })
+              if (response.data) {
+                return response.data  
+                
+              }console.log(response.status)
+      }
+      
     }
    
 })
 return data
 }
+
 
 export function useCastAndCrew(movieid:string|undefined,variant:string){
   const data = useQuery({
@@ -155,89 +191,7 @@ return data
 
 }
 
-export function useSerieCastAndCrew(serieid:string){
-  const data = useQuery({
-    queryKey:['Topcast',serieid],
-    queryFn: async ()=>{
-      const response = await axios.get(`https://api.themoviedb.org/3/tv/${serieid}/credits?language=en-US`,{
-        headers:headers
-      })
-            if (response.data) {
-              return response.data  
-              
-            }console.log(response.status)
-    }
-   
-})
-return data
-}
 
-export function useTrendingSeries(){
-  const data = useQuery({
-    queryKey:['trending-series',],
-    queryFn: async ()=>{
-      const response = await axios.get(`https://api.themoviedb.org/3/trending/tv/day?language=en-US`,{
-        headers:headers
-      })
-            if (response.data) {
-              return response.data  
-              
-            }console.log(response.status)
-    }
-   
-})
-return data
 
-}
-export function useCategorySeries(category:string){
-  const data = useQuery({
-    queryKey:['categories',],
-    queryFn: async ()=>{
-      const response = await axios.get(`https://api.themoviedb.org/3/discover/tv?first_air_date_year=2023&include_adult=false&include_null_first_air_dates=false&language=en-US&page=1&sort_by=popularity.desc&with_keywords=${category}&with_origin_country=US`,{
-        headers:headers
-      })
-            if (response.data) {
-              return response.data  
-              
-            }console.log(response.status)
-    }
-   
-})
-return data
 
-}
-
-export function useSerieId(serieid:string|undefined){
-  const data = useQuery({
-    queryKey:['single',serieid],
-    queryFn: async ()=>{
-      const response = await axios.get(`https://api.themoviedb.org/3/tv/${serieid}?language=en-US`,{
-        headers:headers
-      })
-            if (response.data) {
-              return response.data  
-            }console.log(response.status)
-    }
-   
-})
-
-return data
-}
-
-export function useRecommendationSeries(serieid:string){
-  const data = useQuery({
-    queryKey:['recommendations',serieid],
-    queryFn: async ()=>{
-      const response = await axios.get(`https://api.themoviedb.org/3/tv/${serieid}/recommendations?language=en-US&page=1`,{
-        headers:headers
-      })
-            if (response.data) {
-              return response.data  
-              
-            }console.log(response.status)
-    }
-   
-})
-return data
-}
 
