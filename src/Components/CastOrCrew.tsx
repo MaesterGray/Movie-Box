@@ -25,8 +25,8 @@ const CastOrCrew:React.FC<props> = ({movieid,variants}) => {
     useEffect(()=>{
             if (castandcrew.isLoading===false) {
                     setDirectors(castandcrew.data.crew.filter((object:People)=>{ return object.job==='Director'}))
-                    console.log(directors)
-
+                    console.log(castandcrew.data)
+               
 
             }
     },[castandcrew.isLoading])
@@ -36,7 +36,7 @@ const CastOrCrew:React.FC<props> = ({movieid,variants}) => {
 
             <div className=' flex flex-col space-y-2 w-[100%]  '>
                 <h1 className=' font-bold'>Directors</h1>
-                <div className='flex space-x-2'>{castandcrew.isLoading?<PersonImageSkeleton/> :directors.map((director:People)=>(<PersonImage  name={director.name} image={director.profile_path} />))}</div>
+                <div className='flex space-x-2'>{castandcrew.isLoading?<PersonImageSkeleton/> :directors.map((director:People,index)=>(<PersonImage key={index}  name={director.name} image={director.profile_path} />))}</div>
             </div>
             
             <div className='flex flex-col space-y-1 w-[100%] overflow-x-auto'>

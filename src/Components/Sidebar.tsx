@@ -4,12 +4,12 @@ import NavigationPellet from './NavigationPellet'
 import { useLocation } from 'react-router-dom'
 
 
-type Routes = {
+export type Routes = {
   display:"Movies" | "Tv-series" | "Home" | "Upcoming" | "Favourites" | "Logout",
   route:string
 }[]
 
-const routes:Routes=[
+ export const routes:Routes=[
     {
       display:'Home',
      route:'/'

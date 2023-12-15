@@ -6,7 +6,7 @@ import Search from './pages/Search'
 import './index.css'
 import { QueryClient,QueryClientProvider } from "@tanstack/react-query"
 import Favourites from './pages/Favourites'
-
+import { ReactQueryDevtools } from '@tanstack/react-query-devtools'
 
 const queryClient = new QueryClient()
 
@@ -25,6 +25,7 @@ function App() {
     </Routes>
       
     </BrowserRouter>
+        <ReactQueryDevtools initialIsOpen={true}/>
     </QueryClientProvider>
 
   )

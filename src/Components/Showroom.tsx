@@ -19,7 +19,9 @@ export  type movieResult = {
   name:string
   release_date:string
   first_air_date:string
-  
+  title:string
+  overview:string
+  backdrop_path:string
 }
 
 
@@ -27,11 +29,10 @@ const Showroom:React.FC<Props> = ({variants}) => {
 const [page,setpage] = useState(1)
   const movies = useDiscover(page,variants)
   
-  const placeholders=[1,2,3,4,5,6]
+  const placeholders=[1,2,3,4,5,6,7,8,9,10,11,12,133,14,15,16,17,18,19,20]
 useEffect(()=>{
   if (movies.isLoading===false) {
-    console.log(movies)
- // console.log(movies.data.results[0].genre_ids)
+    ''
   }
 },[movies.isLoading])
 

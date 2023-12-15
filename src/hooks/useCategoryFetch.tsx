@@ -194,4 +194,29 @@ return data
 
 
 
-
+export function useVideo(variant:string|undefined,id:string|undefined){
+ const data = useQuery(
+    {
+      queryKey:['video',variant,id],
+      queryFn: async ()=>{
+        if (variant==='Movies') {
+          const response = await axios.get(`https://api.themoviedb.org/3/movie/${id}/videos?language=en-US`,
+          {headers:headers})
+          if (response.data) {
+            return  response.data
+          }else{
+            console.log(response.status)
+          }
+        }else{
+          const response = await axios.get(`https://api.themoviedb.org/3/tv/${id}/videos?language=en-US`,{headers:headers})
+          if (response.data) {
+            return response . data
+          }else{
+            console.log(response.status)
+          }
+        }
+      }
+    }
+  )
+  return data
+}

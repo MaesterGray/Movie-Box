@@ -1,16 +1,18 @@
 import React from 'react'
-import { Link } from 'react-router-dom'
+import { useNavigate } from 'react-router-dom'
+
 
 
 type Props ={
-    isLoading?:boolean,
-    title?:string,
+    isLoading:boolean,
+    title:string,
     rating:number,
-    description?:string,
-    variant?:'Movies'|'Tv-series',
+    description:string,
+    variant:'Movies'|'Tv-series',
     id:string
 }
 const DescriptionBox:React.FC<Props> = ({isLoading,title,rating,description,id,variant}) => {
+  const navigate = useNavigate()
   return (
     <div className='hidden lg:block lg:absolute    lg:w-[17vw] lg:h-[17vw]  backdrop-blur-lg  bottom-[25%] left-[5%] shadow-sm shadow-black rounded-md p-3 hover:scale-110 font-DmSans'>
         {
@@ -32,14 +34,15 @@ const DescriptionBox:React.FC<Props> = ({isLoading,title,rating,description,id,v
             </h1>
           <p className=' w-full flex justify-evenly'>
             <span>{`Rating: ${Math.floor(rating)}/10`}</span>
-            {variant ==='Tv-series' &&<span>2 seasons</span>}
            </p>
           <section className='w-full h-[40%] text-ellipsis  overflow-hidden '>
             {description}
           </section>
-         <Link to={`Movies/${id}`}>
-           <button className='bg-red-400 rounded-md flex justify-center items-center  p-1 hover:bg-red-300 cursor-pointer w-full '>Watch Trailer</button>
-          </Link>
+           <button className='bg-red-400 rounded-md flex justify-center items-center  p-1 hover:bg-red-300 cursor-pointer w-full ' onClick={()=>{if(variant==='Movies'){
+            navigate(`/Movies/${id}`)
+           }else{
+            navigate(`/Tv-series/${id}`)
+           }}}>Watch Trailer</button>
         </div>
           }
         </div>

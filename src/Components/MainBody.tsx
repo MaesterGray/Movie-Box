@@ -54,8 +54,8 @@ const MainBody:React.FC<props>  = ({isLoading,overview,movieid,recommendations,v
               <h1 className="text-center font-bold text-lg dark:text-white">Similar</h1>
             <div className="w-full flex rounded-md h-[30vh] sm:h-[40vh] md:h-[60vh]  lg:h-[45vh] space-x-1">
               { recommendations.length>0 ?
-              recommendations.map((object:recommendation)=>(
-              <img src={`${imageBase}${object.poster_path}`} onClick={()=>{if (variants==='Movies') {
+              recommendations.map((object:recommendation,index)=>(
+              <img key={index} src={`${imageBase}${object.poster_path}`} onClick={()=>{if (variants==='Movies') {
                 navigate(`/Movies/${object.id}`)
               } else{navigate(`/Tv-series/${object.id}`)} }} className=" w-[33.34%] h-full  md:h-full lg:h-full rounded-md hover:scale-105 cursor-pointer"/>)):'nothing here'}
             </div>
