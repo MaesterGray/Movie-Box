@@ -33,7 +33,7 @@ const handleNavigate = ()=>{
      <div className=" h-[45%] flex flex-col space-y-2   p-3 w-full h">
      <small className=" text-gray-400 text-sm">{debut}</small>
         <h1 className=" text-black text-lg font-bold  truncate w-full h-[20%]  ">{title}</h1>
-        <span>Rating: {rating}</span>
+        <span className=" flex justify-between text-lg font-semibold"><small>Rating: {rating}</small> <small> {variants==='Movies'?'Movie':'Serie'}</small></span>
         <small className="  font-thin w-full h-[10%]"><GenreMap genreIds={genres}/></small>
      </div>
      

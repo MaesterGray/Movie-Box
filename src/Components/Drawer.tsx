@@ -27,8 +27,8 @@ const Drawer = ({isOpen,stateupdater}:props) => {
   return(
   createPortal (
    isOpen&&<div className=' w-screen h-screen   backdrop:blur-sm  top-0 z-50 fixed flex justify-center items-center' onClick={()=>stateupdater(!isOpen)}>
-        <div className=' w-[30%] h-[50%] bg-black flex flex-col space-y-5 rounded-md shadow-lg '>
-        <div className=' bg-black w-full h-[10%] flex justify-center items-center'><Logo variant='sidebar'/></div>
+        <div className=' w-[50%] h-[50%] bg-black flex flex-col space-y-5 rounded-md shadow-lg '>
+        <div className=' bg-black w-full h-[10%] flex justify-center items-center rounded-md'><Logo variant='sidebar'/></div>
 
           {routes.map((route)=>(<NavigationPellet route={route.route} key={route.display} variant={route.display} active={active}/>))}
         </div>

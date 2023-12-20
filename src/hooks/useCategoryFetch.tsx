@@ -87,21 +87,6 @@ export function useSearchFetch(query:string){
 return data
 }
 
-export function useTvSeriesSearch(query:string){
-  const data = useQuery({
-    queryKey:['seriessearch',query],
-    queryFn: async ()=>{
-      const response = await axios.get(`https://api.themoviedb.org/3/search/tv?query=${query}&include_adult=false&language=en-US&page=1`,{
-        headers:headers
-      })
-        if(response.data){
-          return response.data
-        }console.log(response.status)
-    }
-  })
-
-  return data
-}
 
 export function useMovieId(id:string|undefined,variant:string){
 

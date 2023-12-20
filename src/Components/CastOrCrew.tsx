@@ -25,7 +25,6 @@ const CastOrCrew:React.FC<props> = ({movieid,variants}) => {
     useEffect(()=>{
             if (castandcrew.isLoading===false) {
                     setDirectors(castandcrew.data.crew.filter((object:People)=>{ return object.job==='Director'}))
-                    console.log(castandcrew.data)
                
 
             }
